@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-c -Wall
-SOURCES=matrix_multiplication.c sieve_of_erastosthenes.c common.c
+SOURCES=matrix_multiplication.c sieve_of_erastosthenes.c bubble_sort.c common.c
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLES=matrix_multiplication sieve_of_erastosthenes
+EXECUTABLES=matrix_multiplication sieve_of_erastosthenes bubble_sort
 
 all: $(EXECUTABLES)
 
@@ -11,6 +11,9 @@ matrix_multiplication: $(OBJECTS)
 
 sieve_of_erastosthenes: $(OBJECTS)
 	$(CC) sieve_of_erastosthenes.o -lm -o $@
+
+bubble_sort: $(OBJECTS)
+	$(CC) bubble_sort.o common.o -o $@
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
