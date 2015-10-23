@@ -1,16 +1,16 @@
 CC=gcc
 CFLAGS=-c -Wall
-SOURCES=main.c sequential_algorithms.c
+SOURCES=matrix_multiplication.c common.c
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=main
+EXECUTABLES=matrix_multiplication 
 
-all: $(SOURCES) $(EXECUTABLE)
+all: $(EXECUTABLES)
 
-$(EXECUTABLE): $(OBJECTS)
+matrix_multiplication: $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(EXECUTABLE) $(OBJECTS) 
+	rm -f $(EXECUTABLES) $(OBJECTS) 
