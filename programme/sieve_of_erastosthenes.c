@@ -4,11 +4,13 @@
 #include <math.h>
 #include <time.h>
 
+#include "common.h"
+
 // Algorithms from https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Algorithm_and_variants
 int *sieve_of_erastosthenes(size_t N){
   int *prime_numbers = (int *) malloc((N+1)*sizeof(int));
   if(prime_numbers == NULL){
-    fprintf(stderr, "Not enough memory. Choose a smaller problem size!\n");
+    fprintf(stderr, MEMORY_MESSAGE);
     return NULL;
   }
   
@@ -23,7 +25,6 @@ int *sieve_of_erastosthenes(size_t N){
   // Sieve
   int j;
   int end_sieve = ((int) ceil(sqrt((double) N)));
-  fprintf(stderr, "1\n");
   for(i=2; i < end_sieve; ++i){
     if(prime_numbers[i] == 1){
       for(j=i*i; j<=N; j=j+i){

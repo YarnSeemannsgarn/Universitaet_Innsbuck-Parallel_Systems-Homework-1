@@ -5,6 +5,24 @@
 
 #include "common.h"
 
+int **create_matrix(size_t M, size_t N)
+{
+    int *values = malloc(M * N * sizeof(int));
+    int **rows = malloc(N * sizeof(int *));
+    int i;
+    for (i=0; i<N; ++i)
+    {
+        rows[i] = values + i*M;
+    }
+    return rows;
+}
+
+void destroy_matrix(int **arr)
+{
+    free(*arr);
+    free(arr);
+}
+
 int **matrix_multiplication(int **matrix1, size_t rows1, size_t columns1, int **matrix2, size_t rows2, size_t columns2){
   int **result = create_matrix(rows1, columns2);
   int sum = 0;
@@ -34,7 +52,7 @@ int main(int argc, char *argv[]){
   int **matrix1 = create_matrix(N, N);
   int **matrix2 = create_matrix(N, N);
   if(*matrix1 == NULL || *matrix2 == NULL){
-    fprintf(stderr, "Not enough memory. Choose a smaller problem size!\n");
+    fprintf(stderr, MEMORY_MESSAGE);
     return EXIT_FAILURE;
   }
 

@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
   // Create and initialise list
   int *list = (int *) malloc(N * sizeof(int));
   if(list == NULL){
-    fprintf(stderr, "Not enough memory. Choose a smaller problem size!\n");
+    fprintf(stderr, MEMORY_MESSAGE);
     return EXIT_FAILURE;
   }
   int i;

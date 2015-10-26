@@ -1,4 +1,5 @@
 matrix_multiplication
 sieve_of_erastosthenes
 bubble_sort
+bucket_sort
 *.o
