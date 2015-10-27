@@ -58,6 +58,7 @@ int main(int argc, char *argv[]){
 
   // Initialise matrices
   int i, j;
+  srand48(time(NULL));
   for(i=0; i<N; ++i){
     for(j=0; j<N; ++j){
       matrix1[i][j] = lrand48() % RANGE_MAX;

@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
     return EXIT_FAILURE;
   }
   int i;
-  srand(time(NULL));
+  srand48(time(NULL));
   for(i=0; i<N; ++i){
     list[i] = lrand48() % RANGE_MAX;
   }
