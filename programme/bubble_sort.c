@@ -13,9 +13,7 @@ void bubble_sort(int *list, size_t N){
     int i;
     for(i=1; i<N; ++i){
       if(list[i-1] > list[i]){
-	int tmp = list[i-1];
-	list[i-1] = list[i];
-	list[i] = tmp;
+	swap(&list[i], &list[i-1]);
 	swapped = 1;
       }
     }

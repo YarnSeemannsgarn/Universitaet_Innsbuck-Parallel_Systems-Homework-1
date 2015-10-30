@@ -17,9 +17,7 @@ void selection_sort(int *list, size_t N){
     }
 
     if(iMin != j){
-      tmp = list[j];
-      list[j] = list[iMin];
-      list[iMin] = tmp;
+      swap(&list[j], &list[iMin]);
     }
   }
 }
