@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-c -Wall
-SOURCES=matrix_multiplication.c dijkstra.c sieve_of_erastosthenes.c bubble_sort.c bucket_sort.c counting_sort.c insertion_sort.c selection_sort.c
+SOURCES=matrix_multiplication.c dijkstra.c sieve_of_erastosthenes.c bubble_sort.c bucket_sort.c counting_sort.c insertion_sort.c selection_sort.c quicksort.c
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLES=matrix_multiplication dijkstra sieve_of_erastosthenes bubble_sort bucket_sort counting_sort insertion_sort selection_sort
+EXECUTABLES=matrix_multiplication dijkstra sieve_of_erastosthenes bubble_sort bucket_sort counting_sort insertion_sort selection_sort quicksort
 
 all: $(EXECUTABLES)
 
@@ -29,6 +29,9 @@ insertion_sort: $(OBJECTS)
 
 selection_sort: $(OBJECTS)
 	$(CC) selection_sort.o common.h -o $@
+
+quicksort: $(OBJECTS)
+	$(CC) quicksort.o common.h -o $@
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@

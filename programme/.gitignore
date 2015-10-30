@@ -6,4 +6,5 @@ bucket_sort
 counting_sort
 insertion_sort
 selection_sort
+quicksort
 *.o

@@ -5,21 +5,26 @@
 
 #include "common.h"
 
-// https://en.wikipedia.org/wiki/Selection_sort#Implementation
-void selection_sort(int *list, size_t N){
-  int i, j, iMin;
-  for(j=0; j<N-1; ++j){
-    iMin = j;
-    for(i=j+1; i<N; ++i){
-      if(list[i] < list[iMin]){
-	iMin = i;
-      }
-    }
+// https://en.wikipedia.org/wiki/Quicksort
+void quicksort(int *begin, int *end){
+  int *ptr;
+  int *split;
+  if(end - begin <= 1){
+    return;
+  }
 
-    if(iMin != j){
-      swap(&list[j], &list[iMin]);
+  ptr = begin;
+  split = begin + 1;
+  while(++ptr <= end){
+    if(*ptr < *begin){
+      swap(ptr, split);
+      ++split;
     }
   }
+  
+  swap(begin, split - 1);
+  quicksort(begin, split - 1);
+  quicksort(split, end);
 }
 
 int main(int argc, char *argv[]){
@@ -45,9 +50,9 @@ int main(int argc, char *argv[]){
   // Measure time
   clock_t begin, end;
   double time_spent;
-  printf("Starting selection sort for problem size %zu\n", N);
+  printf("Starting quicksort for problem size %zu\n", N);
   begin = clock();
-  selection_sort(list, N);
+  quicksort(&list[0], &list[N-1]);
   end = clock();
   time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("Time spent: %fs\n", time_spent);
