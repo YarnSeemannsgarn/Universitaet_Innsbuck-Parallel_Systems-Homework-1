@@ -4,4 +4,5 @@ sieve_of_erastosthenes
 bubble_sort
 bucket_sort
 counting_sort
+insertion_sort
 *.o
