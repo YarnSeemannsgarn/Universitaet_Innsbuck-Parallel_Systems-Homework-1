@@ -63,6 +63,11 @@ int main(int argc, char *argv[]){
   time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("Time spent: %fs\n", time_spent);
 
+  // Check
+  // for(i=0; i<N; ++i){
+  //   printf("%i\n", list[i]);
+  // }
+
   // Free memory
   free(list);
 

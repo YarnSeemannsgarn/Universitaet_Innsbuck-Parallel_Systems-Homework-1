@@ -42,12 +42,17 @@ int main(int argc, char *argv[]){
   // Measure time
   clock_t begin, end;
   double time_spent;
-  printf("Starting counting sort for problem size %zu\n", N);
+  printf("Starting insertion sort for problem size %zu\n", N);
   begin = clock();
   insertion_sort(list, N);
   end = clock();
   time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("Time spent: %fs\n", time_spent);
+
+  // Check
+  // for(i=0; i<N; ++i){
+  //   printf("%i\n", list[i]);
+  // }
 
   // Free memory
   free(list);

@@ -5,4 +5,5 @@ bubble_sort
 bucket_sort
 counting_sort
 insertion_sort
+selection_sort
 *.o

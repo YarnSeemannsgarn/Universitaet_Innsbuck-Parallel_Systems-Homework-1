@@ -5,21 +5,23 @@
 
 #include "common.h"
 
-// Algorithm from https://en.wikipedia.org/wiki/Bubble_sort#Implementation
-void bubble_sort(int *list, size_t N){
-  int swapped = 0;
-  do{
-    swapped = 0;
-    int i;
-    for(i=1; i<N; ++i){
-      if(list[i-1] > list[i]){
-	int tmp = list[i-1];
-	list[i-1] = list[i];
-	list[i] = tmp;
-	swapped = 1;
+// https://en.wikipedia.org/wiki/Selection_sort#Implementation
+void selection_sort(int *list, size_t N){
+  int i, j, iMin, tmp;
+  for(j=0; j<N-1; ++j){
+    iMin = j;
+    for(i=j+1; i<N; ++i){
+      if(list[i] < list[iMin]){
+	iMin = i;
       }
     }
-  }while(swapped == 1);
+
+    if(iMin != j){
+      tmp = list[j];
+      list[j] = list[iMin];
+      list[iMin] = tmp;
+    }
+  }
 }
 
 int main(int argc, char *argv[]){
@@ -45,9 +47,9 @@ int main(int argc, char *argv[]){
   // Measure time
   clock_t begin, end;
   double time_spent;
-  printf("Starting bubble sort for problem size %zu\n", N);
+  printf("Starting selection sort for problem size %zu\n", N);
   begin = clock();
-  bubble_sort(list, N);
+  selection_sort(list, N);
   end = clock();
   time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("Time spent: %fs\n", time_spent);
