@@ -5,24 +5,6 @@
 
 #include "common.h"
 
-int **create_matrix(size_t M, size_t N)
-{
-    int *values = malloc(M * N * sizeof(int));
-    int **rows = malloc(N * sizeof(int *));
-    int i;
-    for (i=0; i<N; ++i)
-    {
-        rows[i] = values + i*M;
-    }
-    return rows;
-}
-
-void destroy_matrix(int **arr)
-{
-    free(*arr);
-    free(arr);
-}
-
 int **matrix_multiplication(int **matrix1, size_t rows1, size_t columns1, int **matrix2, size_t rows2, size_t columns2){
   int **result = create_matrix(rows1, columns2);
   int sum = 0;
