@@ -24,8 +24,8 @@ int **matrix_multiplication(int **matrix1, size_t rows1, size_t columns1, int **
 
 int main(int argc, char *argv[]){
   // Handle parameter
-  if(argc != 2){
-    fprintf(stderr, "Usage: %s <problem-size>\n", argv[0]);
+  if(argc != 2 && argc != 3){
+    fprintf(stderr, USAGE_MESSAGE, argv[0]);
     return EXIT_FAILURE;
   }
   size_t N = atoi(argv[1]);
@@ -48,6 +48,13 @@ int main(int argc, char *argv[]){
     }
   }
 
+  // Print Matrix for matrix multiplication
+  if(argc == 3){
+    printf("Matrices for matrix multiplication:\n");
+    print_matrix(matrix1, N, N);
+    print_matrix(matrix2, N, N);
+  }
+
   // Measure time
   clock_t begin, end;
   double time_spent;
@@ -58,6 +65,13 @@ int main(int argc, char *argv[]){
   end = clock();
   time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("Time spent: %fs\n", time_spent);
+
+  
+  // Print result matrix
+  if(argc == 3){
+    printf("\nResult matrix:\n");
+    print_matrix(result, N, N);
+  }
 
   // Free memory
   destroy_matrix(matrix1);

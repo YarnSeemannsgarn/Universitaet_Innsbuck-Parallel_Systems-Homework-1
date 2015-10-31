@@ -38,8 +38,8 @@ int *sieve_of_erastosthenes(size_t N){
 
 int main(int argc, char *argv[]){
   // Handle parameter
-  if(argc != 2){
-    fprintf(stderr, "Usage: %s <problem-size>\n", argv[0]);
+  if(argc != 2 && argc != 3){
+    fprintf(stderr, USAGE_MESSAGE, argv[0]);
     return EXIT_FAILURE;
   }
   size_t N = atoi(argv[1]);
@@ -59,9 +59,16 @@ int main(int argc, char *argv[]){
   printf("Time spent: %fs\n", time_spent);
 
   // Check
-  // for(i=0; i<N; ++i){
-  //   printf("%i\n", result[i]);
-  // }
+  if(argc == 3){
+    printf("\nPrime numbers until %zu:\n", N);
+    int i;
+    for(i=0; i<N; ++i){
+      if(result[i] == 1){
+	printf("%i, ", i);
+      }
+    }
+    printf("\b\b\n");
+  }
 
   // Free memory
   free(result);

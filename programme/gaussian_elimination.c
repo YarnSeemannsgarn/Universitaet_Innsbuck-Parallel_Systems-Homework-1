@@ -70,8 +70,8 @@ double *gaussian_elimination(double **matrix, size_t N){
 
 int main(int argc, char *argv[]){
   // Handle parameter
-  if(argc != 2){
-    fprintf(stderr, "Usage: %s <problem-size>\n", argv[0]);
+  if(argc != 2 && argc != 3){
+    fprintf(stderr, USAGE_MESSAGE, argv[0]);
     return EXIT_FAILURE;
   }
   size_t N = atoi(argv[1]);
@@ -98,14 +98,10 @@ int main(int argc, char *argv[]){
     }
 
     // Matrix before gaussian elimination
-    // printf("Matrix before gaussian elimination:\n");
-    // for(i=0; i<N-1; ++i){
-    //   for(j=0; j<N; ++j){
-    // 	printf("%f ", matrix[i][j]);
-    //   }
-    //   printf("\n");
-    // }
-    // printf("\n");
+    if(argc == 3){
+      printf("Matrix before gaussian elimination:\n");
+      print_double_matrix(matrix, N-1, N);
+    }
 
     // Measure time
     clock_t begin, end;
@@ -124,18 +120,10 @@ int main(int argc, char *argv[]){
     printf("Time spent: %fs\n", time_spent);
 
     // Matrix after gaussian elimination
-    // printf("\nMatrix after gaussian elimination:\n");
-    // for(i=0; i<N-1; ++i){
-    //   for(j=0; j<N; ++j){
-    // 	printf("%f ", matrix[i][j]);
-    //   }
-    //   printf("\n");
-    // }
-    // printf("\nVariable values:\n");
-    // for(i=0; i<N-1; ++i){
-    //   printf("%f ", result[i]);
-    // }
-    // printf("\n");
+    if(argc == 3){
+      printf("\nMatrix after gaussian elimination:\n");
+      print_double_matrix(matrix, N-1, N);
+    }
 
     // Free memory
     free(result);

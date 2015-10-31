@@ -37,7 +37,6 @@ void free_edges(edge_t *head){
   }
 }
 
-
 void print_node(node_t *node){
   printf("Node: %p\n", node);
   edge_t *current_edge = node->edge_head;
@@ -203,8 +202,8 @@ void dijsktra(node_t *nodes, size_t node_count, node_t *source){
 // ==================================================================================
 int main(int argc, char *argv[]){
   // Handle parameter
-  if(argc != 2){
-    fprintf(stderr, "Usage: %s <problem-size>\n", argv[0]);
+  if(argc != 2 && argc != 3){
+    fprintf(stderr, USAGE_MESSAGE, argv[0]);
     return EXIT_FAILURE;
   }
   size_t N = atoi(argv[1]);
@@ -223,11 +222,15 @@ int main(int argc, char *argv[]){
       edge_count++;
     }
   }
-  
-  //Print nodes with edges
-  //for(i=0; i<N; ++i){
-  //print_node(&nodes[i]);
-  //}
+
+  // Print nodes with edges before dijkstra  
+  if(argc == 3){
+    printf("Nodes before dijkstra\n");
+    for(i=0; i<N; ++i){
+      print_node(&nodes[i]);
+    }
+    printf("\n");
+  }
 
   // Measure time
   clock_t begin, end;
@@ -241,7 +244,11 @@ int main(int argc, char *argv[]){
 
   // Free memory
   for(i=0; i<N; ++i){
-    //print_node(&nodes[i]);
+    // Print nodes after dijkstra
+    if(argc == 3){
+      printf("\nNodes after dijkstra:\n");
+      print_node(&nodes[i]);
+    }
     free_edges(nodes[i].edge_head);
   }  
   free(&nodes[0]);

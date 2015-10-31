@@ -64,8 +64,8 @@ int bucket_sort(int *list, size_t N, int bucket_count){
 
 int main(int argc, char *argv[]){
   // Handle parameter
-  if(argc != 2){
-    fprintf(stderr, "Usage: %s <problem-size>\n", argv[0]);
+  if(argc != 2 && argc != 3){
+    fprintf(stderr, USAGE_MESSAGE, argv[0]);
     return EXIT_FAILURE;
   }
   size_t N = atoi(argv[1]);
@@ -80,6 +80,12 @@ int main(int argc, char *argv[]){
   srand48(time(NULL));
   for(i=0; i<N; ++i){
     list[i] = lrand48() % RANGE_MAX;
+  }
+
+  // Print list before sorting
+  if(argc == 3){
+    printf("List before sorting:\n");
+    print_list(list, N);
   }
 
   // Calculate bucket count as the floored square root of N
@@ -99,10 +105,11 @@ int main(int argc, char *argv[]){
   time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
   printf("Time spent: %fs\n", time_spent);
 
-  // Check
-  // for(i=0; i<N; ++i){
-  //   printf("%i\n", list[i]);
-  // }  
+  // Print list after sorting
+  if(argc == 3){
+    printf("\nList after sorting:\n");
+    print_list(list, N);
+  }
 
   // Free memory
   free(list);
