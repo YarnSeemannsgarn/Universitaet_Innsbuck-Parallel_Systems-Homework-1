@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#$ -cwd
+#$ -o sieve_of_erastosthenes.dat
+#$ -e sieve_of_erastosthenes_error.dat
+
+./sieve_of_erastosthenes 1000000000

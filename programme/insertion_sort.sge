@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#$ -cwd
+#$ -o insertion_sort.dat
+#$ -e insertion_sort_error.dat
+
+./insertion_sort 1000000

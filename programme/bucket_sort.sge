@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#$ -cwd
+#$ -o bucket_sort.dat
+#$ -e bucket_sort_error.dat
+
+./bucket_sort 1000000

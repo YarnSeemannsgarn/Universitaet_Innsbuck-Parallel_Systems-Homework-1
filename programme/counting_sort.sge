@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#$ -cwd
+#$ -o counting_sort.dat
+#$ -e counting_sort_error.dat
+
+./counting_sort 1000000
